@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { MapPin, ArrowRight, Sliders } from 'lucide-react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { rides } from '@/lib/placeholder-data'
 import { RideCard } from '@/components/site/ride-card'
 import { FilterSidebar, type FilterState } from '@/components/site/filter-sidebar'
@@ -9,6 +10,11 @@ import { Button } from '@/components/ui/button'
 import { SectionHeading } from '@/components/site/bits'
 
 export default function SearchPage() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const fromParam = searchParams.get('from') || 'Lisbon'
+  const toParam = searchParams.get('to') || 'Porto'
+
   const [filters, setFilters] = useState<FilterState>({
     priceRange: [0, 50],
     time: [],
@@ -76,12 +82,12 @@ export default function SearchPage() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="size-5" />
-                <span className="font-medium">Lisbon</span>
+                <span className="font-medium">{fromParam}</span>
               </div>
               <ArrowRight className="hidden size-5 text-muted-foreground sm:block" />
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="size-5" />
-                <span className="font-medium">Porto</span>
+                <span className="font-medium">{toParam}</span>
               </div>
               <div className="ml-auto flex gap-2">
                 <Button variant="outline">
