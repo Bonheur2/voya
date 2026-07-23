@@ -148,7 +148,9 @@ export default function SearchPage() {
                 ))
               ) : (
                 <div className="border border-border bg-card p-12 text-center">
-                  <p className="text-muted-foreground mb-2">No rides found matching your filters</p>
+                  <MapPin className="size-12 text-muted-foreground mx-auto mb-4 opacity-40" />
+                  <p className="font-semibold text-foreground mb-1">No rides found</p>
+                  <p className="text-muted-foreground text-sm mb-6">Try adjusting your filters or search a different route</p>
                   <Button
                     variant="outline"
                     onClick={() => setFilters({
@@ -159,7 +161,7 @@ export default function SearchPage() {
                       instantBook: false,
                     })}
                   >
-                    Clear filters
+                    Clear all filters
                   </Button>
                 </div>
               )}
