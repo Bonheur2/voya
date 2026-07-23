@@ -20,6 +20,11 @@ export default function SearchPage() {
   const [sortBy, setSortBy] = useState<'relevant' | 'price' | 'time' | 'rating'>('relevant')
 
   const filteredRides = rides.filter((ride) => {
+    // Price range filter
+    if (ride.price < filters.priceRange[0] || ride.price > filters.priceRange[1]) {
+      return false
+    }
+
     // Time filter
     if (filters.time.length > 0) {
       const hour = parseInt(ride.departTime.split(':')[0])
