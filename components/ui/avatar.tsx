@@ -18,13 +18,13 @@ function Avatar({
   return (
     <span
       className={cn(
-        'relative inline-block shrink-0 overflow-hidden bg-muted',
+        'relative inline-block shrink-0 overflow-hidden rounded-full bg-muted',
         ring && 'ring-2 ring-card ring-offset-0',
         className,
       )}
       style={{ width: size, height: size }}
     >
-      <Image src={src || '/placeholder.svg'} alt={alt} fill sizes={`${size}px`} className="object-cover" />
+      <Image src={src || '/placeholder.svg'} alt={alt} fill sizes={`${size}px`} className="rounded-full object-cover" />
     </span>
   )
 }
