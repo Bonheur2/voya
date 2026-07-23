@@ -48,6 +48,14 @@ export default function SearchPage() {
       return false
     }
 
+    // Amenities filter
+    if (filters.amenities.length > 0) {
+      const hasAll = filters.amenities.every((a) =>
+        ride.amenities.some((ra) => ra.toLowerCase().includes(a.toLowerCase()))
+      )
+      if (!hasAll) return false
+    }
+
     return true
   })
 
